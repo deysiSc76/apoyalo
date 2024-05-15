@@ -1,17 +1,18 @@
 import { Component } from "react";
 class PersonaCard extends Component {
-    constructor(props) {
-        super(props);
-      
-    }
-    render=()=>{
+    render = () => {
+        const{index, firstName, lastName, age, hairColor, sumar}= this.props;
         return (
+           
             <div className="card">
                 <div>
-                    <h2>{this.props.lastName} {this.props.firsName}</h2>
-                    <p>{this.props.age}</p>
-                    <p>{this.props.hairColor}</p>
+                    <h2>{lastName} {firstName}</h2>
+                    <p>{age}</p>
+                    <p>{hairColor}</p>
+                    <button onClick={()=> {sumar(index)}}>birthday</button>
+                    
                 </div>
+                
             </div>
         );
     }

@@ -12,7 +12,7 @@ class App extends Component {
         { firstName: 'Diana',
           lastName: 'Gomez',
           age: 25,
-          hairColor: 'black',},
+          hairColor: 'black'},
        {  firstName: 'Marcelo', 
           lastName: 'Cabrera', 
           age:23,
@@ -28,16 +28,34 @@ class App extends Component {
     };
 
   }
+  sumar = (index) => {
+    const listaPersonasActualizadas=this.state.listaPersonas.map((personaP, i) => {
+      if(i===index){
+        return{
+          ...personaP,
+          age:personaP.age+1
+        };
+      }
+      return personaP;
+        
+    });
+    this.setState({
+      listaPersonas:listaPersonasActualizadas
+    });
+  }
   render = ()=> {
     return(
       <div>
           {this.state.listaPersonas.map((persona, index)=>{
-            return(<PersonaCard lastName={persona.lastName}
+            return(<PersonaCard key={index} index={index} lastName={persona.lastName}
                                 firsName={persona.firstName}
                                 age={persona.age}
-                                hairColor={persona.hairColor}/>)
-          })}
-        
+                                hairColor={persona.hairColor}
+                                sumar={this.sumar} />)
+
+                                
+          })
+          } 
       </div>
 
     );
